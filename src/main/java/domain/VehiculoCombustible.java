@@ -11,21 +11,15 @@ public class VehiculoCombustible extends Vehiculo {
         this.litrosExtra = litrosExtra;
     }
     
-     public double getKilometrosPorLitro() {
-        return kilometrosPorLitro;
-    }
-
-    public double getLitrosExtra() {
-        return litrosExtra;
-    }
+    public double getKilometrosPorLitro() { return kilometrosPorLitro; }
+    public double getLitrosExtra() { return litrosExtra; }
 
     @Override
     public double calcularConsumo(double kilometros) {
-        double total = kilometros / kilometrosPorLitro;
-        int antiguedad = 2026 - anio;
-        if (antiguedad >5){
-            total += (kilometros / 15.0) * litrosExtra;
+        double consumo = kilometros / kilometrosPorLitro;
+        if (2026 - anio > 5) {
+            consumo += (kilometros / 15) * litrosExtra;
         }
-        return total;
+        return consumo;
     }
 }
