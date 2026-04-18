@@ -25,6 +25,7 @@ public class VehiculoViewModel {
         litrosExtra = vehiculo instanceof VehiculoCombustible ? ((VehiculoCombustible)vehiculo).getLitrosExtra() : 0;
         kmARecorrer = 100;
     }
+    
 
     public String getPatente() {
         return patente;
@@ -61,4 +62,5 @@ public class VehiculoViewModel {
     public String getSucursal() {
         return sucursal;
     }
+    
 }
