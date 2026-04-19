@@ -24,26 +24,14 @@ public class Persistencia {
         sucursales.add(s2);
     }
     
-    private static void inicializarVehiculos(){
-        Sucursal s1 = sucursales.get(0);
-        Sucursal s2 = sucursales.get(1);
-        
-        Marca m1 = new Marca("Renault", "Francia");
-        Marca m2 = new Marca("Ford", "Estados Unidos");
-        Marca m3 = new Marca("Iveco", "Italia");
-        Marca m4 = new Marca("Mercedes", "Alemania");
-        
-        
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", m1, "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", m2, "E-Transit", 2021, 1300, s2, 16);
-
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", m3, "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", m4, "Sprinter", 2020, 1200, s2, 7, 1);
-        
-        vehiculos.add(v1);
-        vehiculos.add(v2);
-        vehiculos.add(v3);
-        vehiculos.add(v4);
+    // Agregamos el getter de sucursales (Lo necesita la VentanaAltaVehiculo)
+    public static ArrayList<Sucursal> getSucursales(){
+        return sucursales;
+    }
+    
+    // Agregamos el método para guardar el vehículo nuevo en memoria
+    public static void agregarVehiculo(Vehiculo v){
+        vehiculos.add(v);
     }
     
     public static ArrayList<Vehiculo> getVehiculos(){
@@ -59,6 +47,7 @@ public class Persistencia {
     public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
-        inicializarVehiculos();
+        // NOTA: Eliminamos la inicialización de vehículos hardcodeados 
+        // tal como lo pide el punto 3.a del trabajo práctico.
     }
 }

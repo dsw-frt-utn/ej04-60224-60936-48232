@@ -157,12 +157,26 @@ public class ListarVehiculosView extends javax.swing.JFrame {
     private void calcularConsumosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularConsumosActionPerformed
          TableModel table = vehiculosGrid.getModel();
          Map<String, Double> lista = new HashMap<>();
-         for(int i=0;i< table.getRowCount();i++){
-             lista.put((String)table.getValueAt(i, 0), (Double)table.getValueAt(i, 8));
+         
+         for(int i = 0; i < table.getRowCount(); i++){
+             String patente = (String) table.getValueAt(i, 0);
+             Object valorCelda = table.getValueAt(i, 8); // Columna 8: Km a recorrer
+             double km = 0;
+             
+             try {
+                 if (valorCelda != null) {
+                     km = Double.parseDouble(valorCelda.toString());
+                 }
+             } catch (NumberFormatException e) {
+                 km = 0; 
+             }
+             
+             lista.put(patente, km);
          }
+         
          double[] consumos = Controlador.calcularConsumos(lista);
-         totalConsumoElectricosValue.setText(String.format("%.2f%n kWh", consumos[0]));
-         totalConsumoCombustibleValue.setText(String.format("%.2f%n litros", consumos[1]));
+         totalConsumoElectricosValue.setText(String.format("%.2f kWh", consumos[0]));
+         totalConsumoCombustibleValue.setText(String.format("%.2f litros", consumos[1]));
     }//GEN-LAST:event_calcularConsumosActionPerformed
 
     /**
